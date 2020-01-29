@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Luiz",
+    "language": ["Kotlin", "Java"]
+  },
+  {
+    "name": "Fernanda",
+    "language": ["Ruby", "Haskell"]
+  },
+  {
+    "name": "Maria Alice",
+    "language": ["Python", "C#", "Javascript"]
+  },
+  {
+    "name": "Renan",
+    "language": ["Javascript", "Ruby"]
+  },
+  {
+    "name": "Luciana",
+    "language": ["Swift", "C++"]
+  },
+  {
+    "name": "Fabio",
+    "language": ["Java", "C++"]
+  },
+  {
+    "name": "Melissa",
+    "language": ["Clojure", "Haskell"]
+  },
+  {
+    "name": "Carolina",
+    "language": ["Python", "Javascript"]
+  },
+  {
+    "name": "Armando",
+    "language": ["Ruby", "Java", "Javascript"]
+  },
+  {
+    "name": "Jaqueline",
+    "language": ["PHP", "Ruby"]
+  },
+  {
+    "name": "Thais",
+    "language": ["Javascript", "Clojure"]
+  }
+]
