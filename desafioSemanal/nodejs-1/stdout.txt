@@ -1,3 +1,4 @@
-audited 51 packages in 1.313s
-found 0 vulnerabilities
+
+> nodejs-0@1.0.0 test:submit /home/mbotelho/codenation/nodejs-1
+> mocha test/submit.test.js --reporter mocha-junit-reporter --reporter-options mochaFile=./output.xml | exit 0
 
