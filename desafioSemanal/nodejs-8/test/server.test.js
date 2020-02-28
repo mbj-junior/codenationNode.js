@@ -114,6 +114,18 @@ test('The API on /api/animals/:id Endpoint at GET method should...', async () =>
   })
 })
 
+test(`return 404 as status code and error message if the item doesn't exists and couldn't be found`, async () => {
+  expect.assertions(2)
+
+  const res = await request(server.app)
+    .get('/api/animals/ERROR!')
+
+  expect(res.statusCode).toEqual(404)
+  expect(res.body).toMatchObject({
+    error: `The record ERROR! couldn't be found.`
+  })
+})
+
 
 test('The API on /api/animals Endpoint at POST method should...', async () => {
 
@@ -137,13 +149,63 @@ test('The API on /api/animals Endpoint at POST method should...', async () => {
   expect(typeof res.body).toEqual('object')
 })
 
-test('The API on /api/animals/:id Endpoint at PATCH method should...', async() => {
 
-  
+test('The API on /api/animals/:id Endpoint at PATCH method should...', async () => {
+  expect.assertions(2)
 
+  const res = await request(server.app)
+    .patch('/api/animals/ANI1580214599567RD121')
+    .send({
+      "pet_age": "60 Meses",
+      "sex": "Femea",
+    })
+
+  expect(res.statusCode).toEqual(200)
+  expect(res.body).toMatchObject({
+    "created_at": "2020-01-28T12:29:59.567Z",
+    "updated_at": "2020-01-28T12:29:59.567Z",
+    "pet_name": "Belchior Fernandes Montalvão",
+    "description": "Gatinho mais fofinho desse mundo",
+    "animal_type": "Gato",
+    "pet_age": "60 Meses",
+    "sex": "Femea",
+    "color": "Branco Malhado",
+    "image_url": ""
+  })
+
+})
+
+test(`return 404 as status code and error message if the item doesn't exists and couldn't be found`, async () => {
+  expect.assertions(2)
+
+  const res = await request(server.app)
+    .patch('/api/animals/ERROR!')
+
+  expect(res.statusCode).toEqual(404)
+  expect(res.body).toMatchObject({
+    error: `The record ERROR! couldn't be found.`
+  })
 })
 
 test('The API on /api/animals/:id Endpoint at DELETE method should...', async () => {
-  // Insira os cenários de teste para esse endpoint aqui!
-  // Arrebenta! :) 
+  expect.assertions(1)
+
+  const res = await request(server.app)
+    .delete('/api/animals/ANI1580214599567RD121')
+  
+  expect(res.statusCode).toEqual(204)
+  
 })
+
+test(`return 404 as status code and error message if the item doesn't exists and couldn't be found`, async () => {
+  expect.assertions(2)
+
+  const res = await request(server.app)
+    .delete('/api/animals/ERROR!')
+
+  expect(res.statusCode).toEqual(404)
+  expect(res.body).toMatchObject({
+    error: `The record ERROR! couldn't be found.`
+  })
+})
+
