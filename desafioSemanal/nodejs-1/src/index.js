@@ -2,7 +2,7 @@
 
 const fs = require('fs')
 
-const file = fs.readFileSync('/home/mbotelho/codenation/nodejs-1/data.csv').toString()
+const file = fs.readFileSync('./data.csv').toString()
 
 const parsedFile = file
     .split('\n')
@@ -28,17 +28,18 @@ const q2 = () => {
 }
 
 //Liste o primeiro nome dos 20 primeiros jogadores de acordo com a coluna `full_name`.
-const q3 = () => {
+const q3 = () => parsedFile.slice(0,20).map(line => line[2])
 
-    const result = []
 
-    for(let i=0; i<20; i++){
-        const a = parsedFile[i][2].split(' ')
-        result.push(a[0])
-    }
 
-    return result
+
+
+function compareFullName (a,b){
+
+    return a.fname.localeCompare(b.fname)
 }
+
+
 
 //Quem são os top 10 jogadores que ganham mais dinheiro (utilize as colunas `full_name [2]` e `eur_wage [17]`)?
 const q4 = () => {
@@ -61,6 +62,8 @@ const q4 = () => {
 
      return nomeDezPrimeirosSalario
 }
+
+
 
 
 function compareEurWage (a,b){

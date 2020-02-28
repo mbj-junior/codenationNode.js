@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="0.134" tests="6" failures="3">
-  <testsuite name="Root Suite" timestamp="2020-02-01T01:54:34" tests="0" failures="0" time="0">
+<testsuites name="Mocha Tests" time="0.14600000000000002" tests="6" failures="2">
+  <testsuite name="Root Suite" timestamp="2020-02-15T20:13:55" tests="0" failures="0" time="0">
   </testsuite>
-  <testsuite name="Fifa data processing" timestamp="2020-02-01T01:54:34" tests="6" file="/home/mbotelho/codenation/nodejs-1/test/submit.test.js" failures="3" time="0.134">
-    <testcase name="Fifa data processing q1" time="0.006" classname="q1">
+  <testsuite name="Fifa data processing" timestamp="2020-02-15T20:13:55" tests="6" file="/home/mbotelho/codenation/nodejs-1/test/submit.test.js" failures="2" time="0.14600000000000002">
+    <testcase name="Fifa data processing q1" time="0.009" classname="q1">
     </testcase>
-    <testcase name="Fifa data processing q2" time="0.007" classname="q2">
+    <testcase name="Fifa data processing q2" time="0.01" classname="q2">
     </testcase>
-    <testcase name="Fifa data processing q3" time="0.002" classname="q3">
-      <failure message="expected [ Array(20) ] to have the same members as [ Array(20) ]" type="AssertionError"><![CDATA[AssertionError: expected [ Array(20) ] to have the same members as [ Array(20) ]
-    at Context.it (test/submit.test.js:20:32)]]></failure>
+    <testcase name="Fifa data processing q3" time="0.001" classname="q3">
     </testcase>
-    <testcase name="Fifa data processing q4" time="0.04" classname="q4">
+    <testcase name="Fifa data processing q4" time="0.045" classname="q4">
       <failure message="expected [ Array(10) ] to have the same members as [ Array(10) ]" type="AssertionError"><![CDATA[AssertionError: expected [ Array(10) ] to have the same members as [ Array(10) ]
     at Context.it (test/submit.test.js:47:32)]]></failure>
     </testcase>
-    <testcase name="Fifa data processing q5" time="0.072" classname="q5">
+    <testcase name="Fifa data processing q5" time="0.074" classname="q5">
     </testcase>
     <testcase name="Fifa data processing q6" time="0.007" classname="q6">
       <failure message="expected { meuMapa: {} } to deeply equal { Object (16, 17, ...) }" type="AssertionError"><![CDATA[AssertionError: expected { meuMapa: {} } to deeply equal { Object (16, 17, ...) }
