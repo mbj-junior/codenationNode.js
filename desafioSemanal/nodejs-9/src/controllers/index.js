@@ -33,10 +33,19 @@ const create = async (request, response) => {
 
 const updateById = async (request, response) => {
   // Implemente o método correspondete a rota PATCH /v1/students/:id
+  const { studentId } = request.params
+  const result = await model.update(request.body, studentId)
+
+  response.status(200).json({ result })
+
 }
 
 const deleteById = async (request, response) => {
   // Implemente o método correspondete a rota DELETE /v1/students/:id
+  const { studentId } = request.params
+  const result = await model.delete(studentId)
+
+  response.status(204).json({ result })
 }
 
 module.exports = {

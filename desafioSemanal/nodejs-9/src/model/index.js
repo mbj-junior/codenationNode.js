@@ -23,6 +23,15 @@ const {
   
       return result
     },
+
+    update: async (data, id) => {
+      const values = setValuesToUpdate(data)
+      const result = await query(`UPDATE students_production SET ${values} WHERE id = ${id}`)
+  
+      return result
+    },
+
+    delete: async id => await query(`DELETE FROM students_production WHERE id = ${id}`)
   }
 
 
