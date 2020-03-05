@@ -8,7 +8,6 @@ const { insertFormatter, queryHelper, updateFormatter } = require('../../db/help
 
 const getAll = async (request, response) => {
   // Implemente o método correspondete a rota GET /v1/students
-
   const data = await model.findAll({})
 
   response.status(200).json({
@@ -19,10 +18,17 @@ const getAll = async (request, response) => {
 
 const getById = async (request, response) => {
   // Implemente o método correspondete a rota GET /v1/students/:id
+  const { studentId } = request.params
+  const data = await model.findById(studentId)
+
+  response.status(200).json(data)
 }
 
 const create = async (request, response) => {
   // Implemente o método correspondete a rota POST /v1/students
+  const result = await model.create(request.body)
+
+  response.status(201).json({ result })
 }
 
 const updateById = async (request, response) => {

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="5" failures="5" time="1.005">
-  <testsuite name="GET /v1/students should" errors="0" failures="5" skipped="0" timestamp="2020-03-05T03:05:47" time="0.615" tests="5">
-    <testcase classname="GET /v1/students should return all students" name="GET /v1/students should return all students" time="0.023">
+<testsuites name="jest tests" tests="5" failures="5" time="1.285">
+  <testsuite name="GET /v1/students should" errors="0" failures="5" skipped="0" timestamp="2020-03-05T14:02:15" time="0.763" tests="5">
+    <testcase classname="GET /v1/students should return all students" name="GET /v1/students should return all students" time="0.034">
       <failure>Error: expect(received).toEqual(expected) // deep equality
 
 Expected: [{&quot;age&quot;: 25, &quot;city&quot;: &quot;São Paulo&quot;, &quot;class&quot;: &quot;Node.js&quot;, &quot;email&quot;: &quot;evemontalvao@gmail.com&quot;, &quot;gender&quot;: &quot;Feminino&quot;, &quot;id&quot;: 1, &quot;is_employed&quot;: 1, &quot;name&quot;: &quot;Eve&quot;, &quot;surname&quot;: &quot;Montalvão&quot;}]
-Received: {&quot;data&quot;: {}}
+Received: {&quot;data&quot;: [{&quot;age&quot;: 25, &quot;city&quot;: &quot;São Paulo&quot;, &quot;class&quot;: &quot;Node.js&quot;, &quot;email&quot;: &quot;evemontalvao@gmail.com&quot;, &quot;gender&quot;: &quot;Feminino&quot;, &quot;id&quot;: 1, &quot;is_employed&quot;: 1, &quot;name&quot;: &quot;Eve&quot;, &quot;surname&quot;: &quot;Montalvão&quot;}, {&quot;age&quot;: 25, &quot;city&quot;: &quot;São Paulo&quot;, &quot;class&quot;: &quot;Node.js&quot;, &quot;email&quot;: &quot;wilmarfjs@gmail.com&quot;, &quot;gender&quot;: &quot;Masculino&quot;, &quot;id&quot;: 2, &quot;is_employed&quot;: 1, &quot;name&quot;: &quot;Wil&quot;, &quot;surname&quot;: &quot;Fernandes&quot;}], &quot;total&quot;: 2}
     at Object.test (/home/mbotelho/codenation/nodejs-9/test/server.submit.test.js:28:27)
     at process._tickCallback (internal/process/next_tick.js:68:7)</failure>
     </testcase>
-    <testcase classname="GET /v1/students/:id should return student based on id" name="GET /v1/students/:id should return student based on id" time="0.009">
+    <testcase classname="GET /v1/students/:id should return student based on id" name="GET /v1/students/:id should return student based on id" time="0.014">
       <failure>Error: expect(received).toBe(expected) // Object.is equality
 
 Expected: 200
@@ -17,7 +17,7 @@ Received: 404
     at Object.test (/home/mbotelho/codenation/nodejs-9/test/server.submit.test.js:46:33)
     at process._tickCallback (internal/process/next_tick.js:68:7)</failure>
     </testcase>
-    <testcase classname="POST /v1/students should create a new occurence" name="POST /v1/students should create a new occurence" time="0.015">
+    <testcase classname="POST /v1/students should create a new occurence" name="POST /v1/students should create a new occurence" time="0.02">
       <failure>Error: expect(received).toBe(expected) // Object.is equality
 
 Expected: 201
@@ -25,7 +25,7 @@ Received: 404
     at Object.test (/home/mbotelho/codenation/nodejs-9/test/server.submit.test.js:77:33)
     at process._tickCallback (internal/process/next_tick.js:68:7)</failure>
     </testcase>
-    <testcase classname="PATCH /v1/students/:id should update occurrence based on id" name="PATCH /v1/students/:id should update occurrence based on id" time="0.007">
+    <testcase classname="PATCH /v1/students/:id should update occurrence based on id" name="PATCH /v1/students/:id should update occurrence based on id" time="0.008">
       <failure>Error: expect(received).toBe(expected) // Object.is equality
 
 Expected: 200
@@ -33,7 +33,7 @@ Received: 404
     at Object.test (/home/mbotelho/codenation/nodejs-9/test/server.submit.test.js:108:33)
     at process._tickCallback (internal/process/next_tick.js:68:7)</failure>
     </testcase>
-    <testcase classname="DELETE /v1/students/:id should delete occurrence based on id" name="DELETE /v1/students/:id should delete occurrence based on id" time="0.008">
+    <testcase classname="DELETE /v1/students/:id should delete occurrence based on id" name="DELETE /v1/students/:id should delete occurrence based on id" time="0.012">
       <failure>Error: expect(received).toBe(expected) // Object.is equality
 
 Expected: 204
