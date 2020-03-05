@@ -4,10 +4,12 @@ const fs = require('fs')
 
 const file = fs.readFileSync('./data.csv').toString()
 
+
 const parsedFile = file
     .split('\n')
     .map(line => line.split(','))
     .slice(1)
+
 
 //Quantas nacionalidades (coluna `nationality`) diferentes existem no arquivo? 
 const q1 = () => {
@@ -30,10 +32,6 @@ const q2 = () => {
 //Liste o primeiro nome dos 20 primeiros jogadores de acordo com a coluna `full_name`.
 const q3 = () => parsedFile.slice(0,20).map(line => line[2])
 
-
-
-
-
 function compareFullName (a,b){
 
     return a.fname.localeCompare(b.fname)
@@ -53,7 +51,6 @@ const q4 = () => {
 
      result.sort(compareEurWage)
 
-
      let nomeDezPrimeirosSalario = [10]
      
      for(let i = 0; i<10; i++){
@@ -63,9 +60,6 @@ const q4 = () => {
      return nomeDezPrimeirosSalario
 }
 
-
-
-
 function compareEurWage (a,b){
 
     if(parseInt(a.eurWage)>parseInt(b.eurWage)){
@@ -73,6 +67,9 @@ function compareEurWage (a,b){
     } 
     if(parseInt(a.eurWage)<parseInt(b.eurWage)){
         return 1
+    }
+    if(parseInt(a.eurWage)===parseInt(b.eurWage)){
+        return compareFullName(a,b)
     }
 
     return 0
@@ -119,31 +116,13 @@ function compareAge (a,b){
 
 
 //Conte quantos jogadores existem por idade. Para isso, construa um mapa onde as chaves são as idades e os valores a contagem.
-const q6 = () => {
-    //Atribuir um mapa
-    let meuMapa = new Map()
-
-    //percorer o arquivo 
-    parsedFile.forEach(line => {
-        //pegar a idade do jogador da linha em questão
-        let idade = line[6]
-
-        if (idade){
-            //verificar se existe a idade como uma chave
-            if(meuMapa.has(idade)){
-                // se existir, somar +1 ao valor 
-                meuMapa.set(idade, meuMapa.get(idade)+1)
-            }else{
-                //se não existir, addicionar a chave com o valor 1
-                meuMapa.set(idade,1)
-            }
+const q6 = () => parsedFile.reduce((acc, cur) => {
+        if(cur[6]){
+            acc[cur[6]]=(acc[cur[6]]||0)+1 
         }
 
-                        
-    })
-    
-    return{meuMapa}
-}
+        return acc    
+    }, {})
 
 
 module.exports = { q1, q2, q3, q4, q5, q6 }
