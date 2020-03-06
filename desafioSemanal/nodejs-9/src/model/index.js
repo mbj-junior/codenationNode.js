@@ -3,15 +3,19 @@ const {
     setValuesToInsert,
     setValuesToUpdate
   } = require('../../db')
+
+  const { NODE_ENV = "production" } = process.env
+  const table = `students_${NODE_ENV}`
   
   const students = {
-    findAll: async () => {
-      const result = await query(`SELECT * FROM students_production`)
-      return result
-      },
+    findAll: () => new Promise((resolve) => {
+    //async () => {
+      const result = query(`SELECT * FROM ${table}`)
+      return resolve(result)
+    }),
 
     findById: async id => {
-      const result = await query(`SELECT * FROM students_production WHERE id = ${id}`)
+      const result = await query(`SELECT * FROM ${table} WHERE id = ${id}`)
         .then(res => (res.length ? res[0] : {}))
   
       return result
@@ -19,19 +23,19 @@ const {
 
     create: async data => {
       const values = setValuesToInsert(data)
-      const result = await query(`INSERT INTO students_production VALUES (${values})`)
+      const result = await query(`INSERT INTO ${table} VALUES (${values})`)
   
       return result
     },
 
     update: async (data, id) => {
       const values = setValuesToUpdate(data)
-      const result = await query(`UPDATE students_production SET ${values} WHERE id = ${id}`)
+      const result = await query(`UPDATE ${table} SET ${values} WHERE id = ${id}`)
   
       return result
     },
 
-    delete: async id => await query(`DELETE FROM students_production WHERE id = ${id}`)
+    delete: async id => await query(`DELETE FROM ${table} WHERE id = ${id}`)
   }
 
 
