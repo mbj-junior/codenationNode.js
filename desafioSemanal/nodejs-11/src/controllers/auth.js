@@ -6,11 +6,10 @@ let Auth = {}
 Auth.getToken = async (req, res, next) => {
   const data = req.body
 
-  if (
-    auth.user !== data.user ||
-    auth.password !== data.password
-   ) {
-    return res
+  if (auth.user !== data.user ||
+    auth.password !== data.password){
+      
+      return res
       .status(401)
       .json({error: 'Login ou senha invalidos'})
   }
