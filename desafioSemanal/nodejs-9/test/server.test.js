@@ -1,40 +1,127 @@
-/*
-  Que tal implementar os seus próprios testes de integração?
-  Não é obrigatório e não terá impacto na nota final do desafio,
-  mas fazê-los pode te dar mais certeza na hora de submeter! 
-*/
-
 const request = require('supertest')
 const { app } = require('../src/server.js')
 
-// Deixamos esses útils aqui pra vcs usarem nos hooks da api do jest
 const { populateTable, cleanTable, connection } = require('./utils')
 
-// Lembrando que vc pode usar esses hooks dentro do escopo das describes tbm!
-// beforeAll(() => { /* Quel tal limpar o banco de teste? */ })
+beforeAll(() => cleanTable('students_test'))
 
-// beforeEach(() => { /* O que vc pode fazer ANTES de cada suite de testes ser executada? */ })
+beforeEach(() => {
+  populateTable('students_test', {
+    'name': 'nomeTeste',
+    'surname': 'sobrenomeTeste',
+    'email': 'teste@gmail.com',
+    'age': 11,
+    'gender': 'Masculino',
+    'class': 'Node.js',
+    'is_employed': false,
+    'city': 'cidadeTeste'
+  })
+})
 
-// afterEach(() => { /* O que vc pode fazer DEPOIS de cada suite de testes ser executada? */ })
+afterEach(() => cleanTable('students_test'))
 
-// // afterAll(() => { /* O que vc pode fazer DEPOIS que todas as suites foram executadas? */ })
+afterAll(() => connection.end())
 
-// describe('GET /v1/students should', () => {
-//   // ...
-// })
+describe('GET /v1/students should', () => {
+  test('Retorna todos estudantes', async () =>{
+    const response = await request (app).get('/v1/students')
+    expect(response.statusCode).toBe(200)
+    expect(response.body).toEqual([{
+      id: 1,
+      name: 'nomeTeste',
+      surname: 'sobrenomeTeste',
+      email: 'teste@gmail.com',
+      age: 11,
+      gender: 'Masculino',
+      class: 'Node.js',
+      is_employed: false,
+      city: 'cidadeTeste'
+    }])
+  })
+})
 
-// describe('GET /v1/students/:id should', () => {
-//   // ...
-// })
+describe('GET /v1/students/:id should', () => {
+  test('Retorna todos estudantes', async () =>{
+    const response = await request (app).get('/v1/students')
+    expect(response.statusCode).toBe(200)
+    expect(response.body).toEqual([{
+      id: 1,
+      name: 'nomeTeste',
+      surname: 'sobrenomeTeste',
+      email: 'teste@gmail.com',
+      age: 11,
+      gender: 'Masculino',
+      class: 'Node.js',
+      is_employed: false,
+      city: 'cidadeTeste'
+    }])
+  })
+})
 
-// describe('POST /v1/students should', () => {
-//   // ...
-// })
+describe('POST /v1/students should', () => {
+  test('create a new occurence', async () => {
+    const response = await request(app)
+      .post('/v1/students')
+      .send({
+        name: 'nomeTestePOST',
+        surname: 'sobrenomeTestePOST',
+        email: 'testePOST@gmail.com',
+        age: 11,
+        gender: 'Masculino',
+        class: 'Node.jsPOST',
+        is_employed: false,
+        city: 'cidadeTestePOST'
+      })
+      .set('Accept', 'application/json')
 
-// describe('PATCH /v1/students/:id should', () => {
-//   // ...
-// })
+    expect(response.statusCode).toBe(201)
+    expect(response.body).toMatchObject({
+      success: 'A new record has been created.'
+    })
 
-// describe('DELETE /v1/students/:id should', () => {
-//   // ...
-// })
+    const updatedData = await request(app).get('/v1/students/2')
+
+    expect(updatedData.body[0]).toEqual({
+      id: 1,
+      name: 'nomeTeste2',
+      surname: 'sobrenomeTeste2',
+      email: 'teste@gmail.com2',
+      age: 11,
+      gender: 'Masculino',
+      class: 'Node.js2',
+      is_employed: false,
+      city: 'cidadeTeste2'
+    })
+  })
+})
+
+describe('PATCH /v1/students/:id should', () => {
+  test('update occurrence based on id', async () => {
+    const response = await request(app)
+      .patch('/v1/students/1')
+      .send({
+        name: 'TesteTeste',
+        surname: 'testado',
+      })
+      .set('Accept', 'application/json')
+
+    expect(response.statusCode).toBe(200)
+    expect(response.body).toMatchObject({
+      success: 'The record has been updated.'
+    })
+
+    const updatedData = await request(app).get('/v1/students/1')
+
+    expect(updatedData.body[0].name).toBe('nomeTeste')
+    expect(updatedData.body[0].surname).toBe('sobrenomeTeste')
+  }) 
+})
+
+describe('DELETE /v1/students/:id should', () => {
+    test('delete occurrence based on id', async () => {
+    const response = await request(app)
+    .delete('/v1/students/1')
+
+    expect(response.statusCode).toBe(204)
+  })
+})

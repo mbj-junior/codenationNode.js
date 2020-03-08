@@ -9,7 +9,6 @@ const {
   
   const students = {
     findAll: () => new Promise((resolve) => {
-    //async () => {
       const result = query(`SELECT * FROM ${table}`)
       return resolve(result)
     }),

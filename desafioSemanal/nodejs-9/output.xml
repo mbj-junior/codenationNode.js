@@ -1,15 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="5" failures="0" time="1.13">
-  <testsuite name="GET /v1/students should" errors="0" failures="0" skipped="0" timestamp="2020-03-05T23:51:01" time="0.668" tests="5">
-    <testcase classname="GET /v1/students should return all students" name="GET /v1/students should return all students" time="0.032">
+<testsuites name="jest tests" tests="5" failures="4" time="1.057">
+  <testsuite name="GET /v1/students should" errors="0" failures="4" skipped="0" timestamp="2020-03-07T19:38:13" time="0.678" tests="5">
+    <testcase classname="GET /v1/students should Retorna todos estudantes" name="GET /v1/students should Retorna todos estudantes" time="0.033">
+      <failure>Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 1
++ Received  + 1
+
+@@ -4,10 +4,10 @@
+      &quot;city&quot;: &quot;cidadeTeste&quot;,
+      &quot;class&quot;: &quot;Node.js&quot;,
+      &quot;email&quot;: &quot;teste@gmail.com&quot;,
+      &quot;gender&quot;: &quot;Masculino&quot;,
+      &quot;id&quot;: 1,
+-     &quot;is_employed&quot;: false,
++     &quot;is_employed&quot;: 0,
+      &quot;name&quot;: &quot;nomeTeste&quot;,
+      &quot;surname&quot;: &quot;sobrenomeTeste&quot;,
+    },
+  ]
+    at Object.test (/home/mbotelho/codenation/nodejs-9/test/server.test.js:29:27)
+    at process._tickCallback (internal/process/next_tick.js:68:7)</failure>
     </testcase>
-    <testcase classname="GET /v1/students/:id should return student based on id" name="GET /v1/students/:id should return student based on id" time="0.008">
+    <testcase classname="GET /v1/students/:id should Retorna todos estudantes" name="GET /v1/students/:id should Retorna todos estudantes" time="0.015">
+      <failure>Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 1
++ Received  + 1
+
+@@ -4,10 +4,10 @@
+      &quot;city&quot;: &quot;cidadeTeste&quot;,
+      &quot;class&quot;: &quot;Node.js&quot;,
+      &quot;email&quot;: &quot;teste@gmail.com&quot;,
+      &quot;gender&quot;: &quot;Masculino&quot;,
+      &quot;id&quot;: 1,
+-     &quot;is_employed&quot;: false,
++     &quot;is_employed&quot;: 0,
+      &quot;name&quot;: &quot;nomeTeste&quot;,
+      &quot;surname&quot;: &quot;sobrenomeTeste&quot;,
+    },
+  ]
+    at Object.test (/home/mbotelho/codenation/nodejs-9/test/server.test.js:47:27)
+    at process._tickCallback (internal/process/next_tick.js:68:7)</failure>
     </testcase>
-    <testcase classname="POST /v1/students should create a new occurence" name="POST /v1/students should create a new occurence" time="0.023">
+    <testcase classname="POST /v1/students should create a new occurence" name="POST /v1/students should create a new occurence" time="0.03">
+      <failure>Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 7
++ Received  + 7
+
+  Object {
+    &quot;age&quot;: 11,
+-   &quot;city&quot;: &quot;cidadeTeste2&quot;,
+-   &quot;class&quot;: &quot;Node.js2&quot;,
+-   &quot;email&quot;: &quot;teste@gmail.com2&quot;,
++   &quot;city&quot;: &quot;cidadeTestePOST&quot;,
++   &quot;class&quot;: &quot;Node.jsPOST&quot;,
++   &quot;email&quot;: &quot;testePOST@gmail.com&quot;,
+    &quot;gender&quot;: &quot;Masculino&quot;,
+-   &quot;id&quot;: 1,
+-   &quot;is_employed&quot;: false,
+-   &quot;name&quot;: &quot;nomeTeste2&quot;,
+-   &quot;surname&quot;: &quot;sobrenomeTeste2&quot;,
++   &quot;id&quot;: 2,
++   &quot;is_employed&quot;: 0,
++   &quot;name&quot;: &quot;nomeTestePOST&quot;,
++   &quot;surname&quot;: &quot;sobrenomeTestePOST&quot;,
+  }
+    at Object.test (/home/mbotelho/codenation/nodejs-9/test/server.test.js:84:33)
+    at process._tickCallback (internal/process/next_tick.js:68:7)</failure>
     </testcase>
-    <testcase classname="PATCH /v1/students/:id should update occurrence based on id" name="PATCH /v1/students/:id should update occurrence based on id" time="0.009">
+    <testcase classname="PATCH /v1/students/:id should update occurrence based on id" name="PATCH /v1/students/:id should update occurrence based on id" time="0.022">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: &quot;nomeTeste&quot;
+Received: &quot;TesteTeste&quot;
+    at Object.test (/home/mbotelho/codenation/nodejs-9/test/server.test.js:115:38)
+    at process._tickCallback (internal/process/next_tick.js:68:7)</failure>
     </testcase>
-    <testcase classname="DELETE /v1/students/:id should delete occurrence based on id" name="DELETE /v1/students/:id should delete occurrence based on id" time="0.007">
+    <testcase classname="DELETE /v1/students/:id should delete occurrence based on id" name="DELETE /v1/students/:id should delete occurrence based on id" time="0.016">
     </testcase>
   </testsuite>
 </testsuites>

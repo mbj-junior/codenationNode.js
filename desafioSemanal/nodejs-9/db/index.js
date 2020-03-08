@@ -1,9 +1,7 @@
 // Here is where you should implement methods to help you to handle DB queries
 
 const mysql = require('mysql')
-const { dbConfig } = require('../config')
-
-const connection = mysql.createConnection(dbConfig)
+const { connection } = require('./helper')
 
 const query = query => {
   return new Promise((resolve, reject) => {
