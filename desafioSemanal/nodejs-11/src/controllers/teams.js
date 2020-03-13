@@ -4,6 +4,7 @@ let Teams = {}
 
 Teams.getAll = async (req, res, next) => {
   const data = await teamsModel.findAll()
+  
 
   res.status(200).json({
     total: data.length,

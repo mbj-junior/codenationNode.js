@@ -9,7 +9,8 @@ const sequelize = new Sequelize(
   config.db.password,
   {
     ...config.db,
-    dialect: 'mysql'
+    dialect: 'mysql',
+    operatorsAliases: false
   }
 )
 
